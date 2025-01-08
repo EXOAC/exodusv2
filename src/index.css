@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    background-color: #000000;
+  }
+  
+  body {
+    @apply bg-black text-white antialiased min-h-screen;
+  }
+}
+
+@layer components {
+  .status-box {
+    @apply relative flex flex-col items-start p-8 w-[360px] rounded-2xl bg-black/60 backdrop-blur-[6px] border border-white/5;
+    @apply transform-gpu transition-all duration-200;
+    @apply hover:-translate-y-1 hover:border-orange-500/30;
+    @apply shadow-[0_8px_16px_rgba(0,0,0,0.5)];
+  }
+
+  .status-icon-wrapper {
+    @apply relative mb-6 p-3 rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-500/5 text-orange-500;
+    @apply transition-all duration-200;
+    @apply group-hover:bg-gradient-to-br group-hover:from-orange-500/30 group-hover:to-orange-500/10;
+    @apply group-hover:text-orange-400;
+  }
+
+  .status-icon {
+    @apply transition-transform duration-200 group-hover:scale-105;
+    @apply will-change-transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .status-title {
+    @apply text-xl font-medium text-white/90 mb-3;
+    @apply transition-colors duration-200 group-hover:text-orange-500;
+  }
+
+  .status-description {
+    @apply text-base text-zinc-400;
+    @apply transition-colors duration-200 group-hover:text-zinc-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(
+      to right,
+      #fb923c 20%,
+      #ea580c 30%,
+      #fdba74 70%,
+      #fb923c 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 200% auto;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .topographic-pattern {
+    background-color: rgb(3, 7, 18);
+    background-image: 
+      linear-gradient(rgba(249, 115, 22, 0.07) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(249, 115, 22, 0.07) 1.5px, transparent 1.5px),
+      linear-gradient(rgba(249, 115, 22, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(249, 115, 22, 0.06) 1px, transparent 1px);
+    background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+    background-position: -1.5px -1.5px, -1.5px -1.5px, -1px -1px, -1px -1px;
+    background-attachment: fixed;
+  }
+
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+  }
+
+  .smooth-scroll:active {
+    cursor: grabbing;
+  }
+
+  .smooth-scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
